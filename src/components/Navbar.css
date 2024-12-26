@@ -1,0 +1,43 @@
+svg {
+	font-family: 'Poppins'sans-serif;
+	width: 196px;
+    height: 44px;
+}
+svg text {
+	animation: stroke 6s infinite alternate;
+	stroke-width: 2;
+	stroke: #A00505;
+	font-size: 22px;
+}
+@keyframes stroke {
+	0%   {
+		fill: rgba(204,4,4,0); stroke: white;
+		stroke-dashoffset: 25%; stroke-dasharray: 0 50%; stroke-width: 2;
+	}
+	70%  {fill: rgba(204,4,4,0); stroke: white; }
+	80%  {fill: rgba(204,4,4,0); stroke: white; stroke-width: 3; }
+	100% {
+		fill: white; stroke: rgba(160,5,5,0);
+		stroke-dashoffset: -25%; stroke-dasharray: 50% 0; stroke-width: 0;
+	}
+}
+@media (max-width: 996px) {
+    .navbar-menu {
+        display: none;
+    }
+
+    .navbar-hamburger {
+        display: block;
+    }
+}
+
+/* Show the regular menu and hide the hamburger button above 996px */
+@media (min-width: 997px) {
+    .navbar-menu {
+        display: flex;
+    }
+
+    .navbar-hamburger {
+        display: none;
+    }
+}

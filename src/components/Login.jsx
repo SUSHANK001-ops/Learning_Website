@@ -1,26 +1,29 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { auth } from './firebase';
+import { auth } from './firebase'; // Update path to your firebase configuration
 import { signInWithEmailAndPassword, sendPasswordResetEmail } from 'firebase/auth';
-import Navbar from './Navbar'; // Importing Navbar component
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
   const [showForgotPassword, setShowForgotPassword] = useState(false);
   const [otpSent, setOtpSent] = useState(false);
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setLoading(true); // Start loading
     try {
       await signInWithEmailAndPassword(auth, email, password);
       setError('');
-      navigate('/app'); // Redirect to the App.jsx route after login
+      setLoading(false); // Stop loading
+      navigate('/app'); // Redirect to the Home component or the app route
     } catch (err) {
       console.error(err);
       setError('Invalid email or password. Please try again.');
+      setLoading(false); // Stop loading on error
     }
   };
 
@@ -37,7 +40,6 @@ const Login = () => {
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col">
-    
       <div className="flex flex-1 items-center justify-center">
         {showForgotPassword ? (
           <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md text-center">
@@ -104,9 +106,12 @@ const Login = () => {
 
             <button
               type="submit"
-              className="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg focus:outline-none focus:ring focus:ring-blue-300 mb-3"
+              className={`w-full ${
+                loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-500 hover:bg-blue-600'
+              } text-white font-semibold py-2 px-4 rounded-lg focus:outline-none focus:ring focus:ring-blue-300 mb-3`}
+              disabled={loading}
             >
-              Login
+              {loading ? 'Logging in...' : 'Login'}
             </button>
 
             <p className="text-center mt-4 text-gray-600">
@@ -123,7 +128,7 @@ const Login = () => {
                 onClick={() => setShowForgotPassword(true)}
                 className="text-blue-500 hover:underline"
               >
-                Reset here
+                Reset It
               </button>
             </p>
           </form>

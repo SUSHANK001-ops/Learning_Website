@@ -1,6 +1,7 @@
+// components/SignUp.jsx
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { auth } from './firebase';
+import { auth } from './firebase'; // Update path to './firebase'
 import {
   createUserWithEmailAndPassword,
   sendEmailVerification,
@@ -9,6 +10,7 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
 } from 'firebase/auth';
+
 
 const SignUp = () => {
   const [email, setEmail] = useState('');
@@ -64,11 +66,15 @@ const SignUp = () => {
 
   const handleGoogleSignUp = async () => {
     try {
-      await signInWithPopup(auth, provider);
-      navigate('/login');
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user; // Access user information here if needed
+      console.log('Google User Info:', user);
+  
+      // Directly navigate to the Home component or App
+      navigate('/app'); // Replace '/home' with the actual route to your Home component
     } catch (err) {
       console.log(err);
-      setError(err.message);
+      setError('Failed to sign in with Google. Please try again.');
     }
   };
 
@@ -224,14 +230,14 @@ const SignUp = () => {
           >
             Sign Up
           </button>
-
           <button
-            type="button"
-            onClick={handleGoogleSignUp}
-            className="w-full bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded-lg focus:outline-none focus:ring focus:ring-red-300"
-          >
-            Sign Up with Google
-          </button>
+  type="button"
+  onClick={handleGoogleSignUp}
+  className="w-full bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded-lg focus:outline-none focus:ring focus:ring-red-300"
+>
+  Sign Up with Google
+</button>
+
 
           <p className="text-center mt-4 text-gray-600">
             Already have an account?{' '}
