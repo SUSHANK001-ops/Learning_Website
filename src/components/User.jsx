@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Pencil, Upload, Star, Settings, Bell, Share2 } from 'lucide-react';
 import { auth } from './firebase';
 import { updateProfile } from 'firebase/auth';
-import Navbar from './Navbar';
-
+import Navbar from './Navbar'
 const UserProfile = () => {
   const [user, setUser] = useState({
     name: '',
@@ -150,9 +149,10 @@ const UserProfile = () => {
   };
 
   return (
-
-    <>  
+    <>
+    
     <Navbar />
+    
     <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-md">
       <div className="text-center">
         {/* Profile Picture Section */}
@@ -261,7 +261,7 @@ const UserProfile = () => {
         <div className="mt-6 text-center">
           <button className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-full hover:from-blue-600 hover:to-blue-700 transition-all duration-300 transform hover:scale-105">
             <Star className="w-4 h-4 mr-2" />
-            Join us Today
+            Join Beta Access
           </button>
           <p className="mt-2 text-xs text-gray-500">Be the first to try new features!</p>
         </div>

@@ -43,7 +43,7 @@ const Navbar = () => {
                     <div className="wrapper h-11 w-9 text-white">
                         <svg>
                             <text x="50%" y="40%" dy=".35em" textAnchor="middle">
-                                Sushank.Code
+                                Mission NEB
                             </text>
                         </svg>
                     </div>
@@ -80,7 +80,7 @@ const Navbar = () => {
                     <ul className="space-y-4 text-center font-bold text-lg lg:flex lg:space-y-0 lg:space-x-6">
                         <li>
                             <ScrollLink
-                                to="home"
+                                to=" home"
                                 smooth={true}
                                 duration={500}
                                 offset={-70}
@@ -99,7 +99,7 @@ const Navbar = () => {
                                 className="hover:text-red-600 cursor-pointer"
                                 onClick={closeMenu}
                             >
-                                About Me
+                                About us
                             </ScrollLink>
                         </li>
                         <li>
@@ -123,7 +123,7 @@ const Navbar = () => {
                                 className="hover:text-red-600 cursor-pointer"
                                 onClick={closeMenu}
                             >
-                                Projects
+                                Student Feedback
                             </ScrollLink>
                         </li>
                         <li>
@@ -143,7 +143,7 @@ const Navbar = () => {
                     {isLoggedIn ? (
                         <div className="flex flex-col lg:flex-row lg:space-x-4 mt-6 lg:mt-0">
                             <button
-                                className="bg-gradient-to-r from-blue-500 to-green-500 ml-4 text-white px-6 py-2 rounded-full"
+                                className="bg-gradient-to-r from-blue-500 to-green-500 ml-4  gap-3 text-white px-6 py-2 rounded-full"
                                 onClick={() => navigate('/user')}
                                 aria-label="Go to user profile"
                             >
@@ -160,7 +160,7 @@ const Navbar = () => {
                     ) : (
                         <div className="flex flex-col lg:flex-row lg:space-x-4">
                             <button
-                                className="bg-gradient-to-r from-red-400 to-blue-500 ml-3 text-white px-6 py-2 rounded-full mt-6 lg:mt-0"
+                                className="bg-gradient-to-r from-red-400 to-blue-500 ml-3  text-white px-6 py-2 rounded-full mt-6 lg:mt-0"
                                 onClick={() => navigate('/login')}
                                 aria-label="Redirect to login"
                             >
